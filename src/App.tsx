@@ -1,17 +1,24 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { Button, HStack } from "@chakra-ui/react";
+import { Button, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import NavBar from "./components/ui/NavBar";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <HStack>
-      <Button>Click me</Button>
-      <Button>Click me</Button>
-    </HStack>
-  );
+  return <Grid templateAreas={{ base: `"nav" "main"`,
+    lg: `"nav nav" "aside main"`
+   }}>
+    <GridItem area="nav" height="50px">
+      <NavBar/>
+    </GridItem>
+      <GridItem
+        area="aside"
+        bg="blue.500"
+        height="50px"
+        display={{ base: "none", lg: "block" }}
+      >
+        Aside
+      </GridItem>
+    <GridItem area="main" bg="blue.500" height="50px">Main</GridItem>
+  </Grid>;
 }
 
 export default App;
